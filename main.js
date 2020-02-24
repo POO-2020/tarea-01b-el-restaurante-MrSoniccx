@@ -6,6 +6,7 @@ import Cliente from "./cliente.js";
 import Pedido from "./pedido.js";
 import Fecha from "./fecha.js"
 import Tiempo from "./tiempo.js"
+import Restaurante from "./restaurante.js";
 
 class Main{
     constructor(){
@@ -17,6 +18,12 @@ class Main{
         this.direccion = new Dirrecion("Manzanas", 524, 12, "Garbantez", 255781, "Colima", "Colima")
         this.cliente = new Cliente("Pepe Pepa Peparin", this.direccion, 3125486691)
         this.pedido = new Pedido(new Fecha(new Date(2018,5,25)), new Tiempo(11,23,"am"), this.cliente)
+        this.pedido.agregarElemento(this.elementoPedido)
+        this.pedido.agregarElemento(this.elementoPedido2)
+        this.pedido.agregarElemento(this.elementoPedido2)
+
+        this.restaurante = new Restaurante("Spag Heddy", 3126758175, this.direccion)
+        
     }
     
     testPrecio()
@@ -34,9 +41,7 @@ class Main{
 
     testPedido()
     {
-        this.pedido.agregarElemento(this.elementoPedido)
-        this.pedido.agregarElemento(this.elementoPedido2)
-        this.pedido.agregarElemento(this.elementoPedido2)
+        
         console.log(this.pedido.getResumen())
         console.log(this.pedido.getNumeroElementos())
         console.log(this.pedido.getProductos())
@@ -44,6 +49,16 @@ class Main{
         this.pedido.listarElementos()
         
         
+    }
+
+    testRestaurante()
+    {
+        this.restaurante.registrarProducto(this.producto)
+        this.restaurante.registrarProducto(this.producto2)
+        this.restaurante.registrarPedido(this.pedido)
+
+        this.restaurante.listarProductos()
+        this.restaurante.listarPedidos()
     }
 }
 
@@ -53,3 +68,4 @@ tester.testElementoProducto();
 tester.testDireccion();
 tester.testCliente();
 tester.testPedido();
+tester.testRestaurante();
